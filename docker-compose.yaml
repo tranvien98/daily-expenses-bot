@@ -1,0 +1,25 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    restart: always
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    ports:
+      - "17017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  # tele-app:
+  #   restart: always
+  #   container_name: tele-app
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/node_modules
+
+volumes:
+  mongo_data:
